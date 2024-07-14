@@ -5,6 +5,8 @@ import { prisma } from "../lib/prisma";
 import { dayjs } from "../lib/dayjs";
 import { getMailClient } from "../lib/mail";
 import nodemailer from "nodemailer"
+import { ClientError } from "../errors/client-error";
+import { env } from "../env";
 
 
 export async function confirmTrip(app: FastifyInstance) {
@@ -32,11 +34,11 @@ export async function confirmTrip(app: FastifyInstance) {
         })
 
         if (!trip) {
-            throw new Error("Trip not found")
+            throw new ClientError("Trip not found")
         }
 
         if (trip.is_confirmed) { //Aqui não faz sentido o usuário confirmar uma viagem que já foi confirmada anteriormente
-            return reply.redirect(`http://localhost:3000/trips/${tripId}`) // Redirecionando o usuário para a página da viagem
+            return reply.redirect(`${env.WEB_BASE_URL}/trips/${tripId}`) // Redirecionando o usuário para a página da viagem
         }
 
         await prisma.trip.update({
@@ -54,7 +56,7 @@ export async function confirmTrip(app: FastifyInstance) {
         await Promise.all(
             trip.participants.map(async (participant) => {
 
-                const confirmationLink = `http://localhost:3333/participants/${participant.id}/confirm`
+                const confirmationLink = `${env.API_BASE_URL}/participants/${participant.id}/confirm`
 
 
                 const message = await (await mail).sendMail({
@@ -82,7 +84,7 @@ export async function confirmTrip(app: FastifyInstance) {
         ) //Esse metodo permite que tudo dentro da promise aconteça em paralelo porém o código só vai continuar quando tudo dentro dele for executado e enviado
         // Ele espera um array de promises como parametro
 
-        return reply.redirect(`http://localhost:3000/trips/${tripId}`)
+        return reply.redirect(`${env.API_BASE_URL}/trips/${tripId}`)
     })
 }
 
