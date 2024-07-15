@@ -47,11 +47,11 @@ Padrão de resposta:
 Padrão de corpo:
 
 ```json
-body: {
+"body": {
   "title": "string",
   "url": "string",
 },
-params: {
+"params": {
     "tripId": "string"
 }
 ```
@@ -73,10 +73,10 @@ Padrão de resposta:
 Padrão de corpo:
 
 ```json
-body: {
+"body": {
   "email": "string"
 },
-params: {
+"params": {
     "tripId": "string"
 }
 ```
@@ -99,11 +99,11 @@ Padrão de resposta:
 Padrão de corpo:
 
 ```json
-body: {
+"body": {
   "title": "string",
   "occurs_at": "string (Convertido para data)" 
 },
-params: {
+"params": {
     "tripId": "string"
 }
 ```
@@ -130,7 +130,7 @@ Padrão de resposta:
 Padrão de corpo:
 
 ```json
-params: {
+"params": {
     "tripId": "string"
 }
 ```
@@ -157,7 +157,7 @@ return { "activities": "trip.activities" },
 Padrão de corpo:
 
 ```json
-params: {
+"params": {
     "tripId": "string"
 }
 ```
@@ -185,7 +185,7 @@ return { "links": "trip.links" },
 Padrão de corpo:
 
 ```json
-params: {
+"params": {
     "participantId": "string"
 }
 ```
@@ -211,7 +211,7 @@ Padrão de resposta:
 Padrão de corpo:
 
 ```json
-params: {
+"params": {
     "tripId": "string"
 }
 ```
@@ -239,7 +239,7 @@ return { "participants": "trip.participants" }
 Padrão de corpo:
 
 ```json
-params: {
+"params": {
     "tripId": "string"
 }
 ```
@@ -266,7 +266,7 @@ Padrão de resposta:
 Padrão de corpo:
 
 ```json
-params: {
+"params": {
     "tripId": "string"
 }
 ```
@@ -287,7 +287,7 @@ Padrão de resposta:
 Padrão de corpo:
 
 ```json
-params: {
+"params": {
     "tripId": "string",
     "participantId": "string"
 }
@@ -313,12 +313,12 @@ Padrão de resposta:
 Padrão de corpo:
 
 ```json
-body: {
+"body": {
   "destination": "string",
   "starts_at": "string (Convertido para data)",
   "ends_at": "string (Convertido para data)"  
 },
-params: {
+"params": {
     "tripId": "string"
 }
 ```
